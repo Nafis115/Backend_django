@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h1>This is app</h1>
+    <h1>{{ lst | join:" - " }}</h1>
+
+    <h1>{{ lst | join:" // " }}</h1>
+
+    <h1>{{ birthday | date:"D d M Y" }}</h1>
+   <h1>{{ add| add:"4" }}</h1>
+
+   <h1>{{ author | capfirst }}</h1>
+
+   <h1> {{lst | cut:","}} </h1>
+   <h1> {{courses | dictsort:"fee" }} </h1> 
+   <h1> {{lst | first}} </h1>
+
+   <h1> {{lst | last}} </h1>
+   <h1> {{lst | length }} </h1>
+   <h1> 
+    {{ courses | linenumbers }}
+   </h1>
+
+   <h1> {{author | lower}} </h1>
+
+   <h1> {{author | upper}} </h1>
+   <h1> 
+    {{author | title }}
+   </h1>
+
+   <h1> {{lst | random}} </h1>
+
+   <h1> {{lst | slice:"1"}} </h1>
+
+   <h1> {{birthday | time:"H:i"}} </h1>
+
+   <h1> {{birthday | time:"H\h i\m"}} </h1>
+
+   <h1> {{birthday | timesince}} </h1>
+
+  </body>
+</html>
