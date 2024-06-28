@@ -1,0 +1,13 @@
+{% extends "base.html" %} 
+{% load crispy_forms_tags %}
+{% block content %}
+
+<h1>welcome to our password change page</h1>
+
+<form style="width: 50%; margin:auto;" method="post">
+{% csrf_token  %}
+{{form|crispy}}
+<button class="btn btn-primary" >Change Password</button>
+</form>
+
+{% endblock content %}

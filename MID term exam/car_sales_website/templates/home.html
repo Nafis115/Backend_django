@@ -1,0 +1,67 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}
+<title>Car Sales</title>
+{% endblock title %}
+
+{% block content %}
+<!-- para -->
+<h1 style="text-align: center; color: #1abc9c; margin-bottom: 70px;">Welcome to Our Car Sales Website</h1>
+<div style="display: flex; justify-content: space-between; align-items: center;">
+  <div style="flex: 1; margin-right: 20px;">
+    <p>
+      Find your dream car today at Our website. We pride ourselves on offering a
+      wide selection of quality vehicles to suit every need and budget. Our
+      knowledgeable and friendly staff are committed to providing exceptional
+      customer service, ensuring that your car-buying experience is smooth and
+      enjoyable. Choose us for our extensive inventory of new and pre-owned vehicles,
+      including the latest models from top manufacturers. We offer competitive
+      pricing and flexible financing options to make your dream car more
+      affordable than ever. Our team of experienced sales professionals is here
+      to help you find the perfect vehicle that fits your lifestyle and
+      preferences.
+    </p>
+  </div>
+  <div style="flex: 1;">
+    <img style="width: 100%;" src="{% static 'car.jpg' %}" alt="Car Image">
+  </div>
+</div>
+
+
+<!-- brands -->
+<div style="display: flex; flex-direction: column; align-items: center; margin-top: 100px;">
+  <h2 style="color: #3498db;">Car Brands</h2>
+  <div style="display: flex; flex-wrap: wrap; justify-content: center;">
+    {% for br in brand %}
+    <a style="margin: 5px;" class="btn btn-info" href="{% url 'brand_wise_car' br.slug %}" role="button">{{ br.name }}</a>
+    {% endfor %}
+  </div>
+</div>
+<!-- 
+cars -->
+<div class="container mt-5">
+  <div class="row justify-content-center">
+    <div class="col-lg-10">
+      <h4 class="text-center mb-4" style="color: #e74c3c;">Total Cars Found: {{ data | length }}</h4>
+      <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+        {% for car in data %}
+        <div class="col">
+          <div class="card shadow-sm">
+            <img src="{{ car.image.url }}" class="card-img-top" alt="Car Image">
+            <div class="card-body">
+              <h5 class="card-title">{{ car.name }}</h5>
+              <p class="card-text">Price: {{ car.price }}</p>
+              <p class="card-text">Car Brand: {{ car.brand.name }}</p>
+              <div class="d-flex justify-content-center">
+                <a href="{% url 'car_details' car.id %}" class="btn btn-primary">View Details</a>
+              </div>
+            </div>
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock content %}

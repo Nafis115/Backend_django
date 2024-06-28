@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="container">
+    <h1>My Purchase History</h1>
+    <ul>
+        {% for purchase in purchases %}
+        <li>
+            <p><b>Car Name:</b> {{ purchase.car.name }}</p>
+            <p><b>Price:</b> {{ purchase.car.price }}</p>
+            <p><b>Purchase Date:</b> {{ purchase.purchase_date }}</p>
+            <hr>
+        </li>
+        {% empty %}
+        <li>No purchases yet.</li>
+        {% endfor %}
+    </ul>
+</div>
+{% endblock %}
